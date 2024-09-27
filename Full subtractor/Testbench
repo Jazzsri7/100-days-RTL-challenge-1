@@ -1,0 +1,31 @@
+module Full_subtractor_tb();
+	reg a,b,bin;
+	wire diff,borrow;
+	integer i,j,k;
+	
+	Full_subtractor DUT (.a(a),.b(b),.bin(bin),.diff(diff),.borrow(borrow));
+	
+	initial
+		begin
+			{a,b,bin}=0;
+		end
+	
+	initial 
+		begin
+			for(i=0;i<2;i=i+1)
+				begin
+				 a=i;
+					for(j=0;j<2;j=j+1)
+					begin
+					   b=j;
+						 for (k=0;k<2;k=k+1)
+						  begin
+						   bin=k;
+						   #10;
+						   $display("a = %b, b = %b, bin = %b, diff = %b, borrow = %b", a, b, bin, diff, borrow);
+						  end
+				    end
+				end
+		end
+endmodule
+						 
