@@ -1,0 +1,21 @@
+module mux(i,s0,s1,Y);
+input s0,s1;
+input [3:0] i;
+output Y;
+wire w1,w2;
+mux2to1 mux1(.a(i[0]),.b(i[1]),.sel(s0),.O(w1));
+mux2to1 mux2(.a(i[2]),.b(i[3]),.sel(s0),.O(w2));
+mux2to1 mux3(.a(w1),.b(w2),.sel(s1),.O(Y));
+endmodule
+
+module mux2to1(a,b,sel,O);
+input a,b,sel;
+output reg O;
+always@(*)
+begin
+   case(sel)
+		1'b0: O=a;
+		1'b1: O=b;
+	endcase
+end
+endmodule
