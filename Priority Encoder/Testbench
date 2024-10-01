@@ -1,0 +1,23 @@
+module priority_encoder_tb();
+   reg [7:0] in;
+   wire [2:0] out;
+   integer i;
+
+//instantiation and port mapping
+   priority_encoder DUT (.in(in),.out(out));
+   
+  initial 
+   begin
+	  in=0;
+   end
+   
+  initial 
+   begin 
+	  for (i=0;i<16;i=i+1)
+	  	begin 
+		   in=i;
+		   #10;
+		  end 
+	  #50 $finish;
+   end
+  endmodule
