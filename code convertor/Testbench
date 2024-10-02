@@ -1,0 +1,25 @@
+module code_converter_tb();
+	reg [3:0] B;
+	wire [3:0] G;
+	integer i;
+	
+//Instantiation and port mapping
+	code_converter DUT (.B(B),.G(G));
+	
+//initializing inputs
+	initial
+	begin
+		B=0;
+		#10;
+	end
+
+	initial
+	begin
+		for(i=0;i<16;i=i+1)
+		begin
+		B = i;
+		#10;
+		end
+		#20;
+	end
+endmodule 
