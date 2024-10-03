@@ -1,0 +1,21 @@
+module decoder(a,b,c,sum,carry);
+	input a,b,c;
+	output sum,carry;
+	
+	wire [7:0] m;
+	
+	assign m[0] = ~a & ~b & ~c;
+  assign m[1] = ~a & ~b & c;
+  assign m[2] = ~a & b & ~c;
+  assign m[3] = ~a & b & c;
+  assign m[4] = a & ~b & ~c;
+  assign m[5] = a & ~b & c;
+  assign m[6] = a & b & ~c;
+  assign m[7] = a & b & c;
+	
+//sum and carry equations using decoder outputs
+  assign sum = m[1] | m[2] | m[4] | m[7];
+  assign carry = m[3] | m[5] | m[6] | m[7];
+	
+endmodule
+	
