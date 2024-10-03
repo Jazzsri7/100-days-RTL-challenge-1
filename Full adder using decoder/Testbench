@@ -1,0 +1,44 @@
+module decoder_tb();
+reg a,b,c;
+wire sum,carry;
+	
+decoder DUT (.a(a),.b(b),.c(c),.sum(sum),.carry(carry));
+
+//initialising inputs
+initial
+	begin
+		{a,b,c}=0;
+	end
+	
+task inputs(input A,input B,input cin);
+	begin
+		a=A;
+		b=B;
+		c=cin;
+	end
+endtask
+
+task delay;
+	begin
+		#10;
+	end
+endtask
+
+initial
+	begin
+		inputs(1'b0,1'b0,1'b1);
+		delay;
+		inputs(1'b0,1'b1,1'b0);
+		delay;
+		inputs(1'b0,1'b1,1'b1);
+		delay;
+		inputs(1'b1,1'b0,1'b0);
+		delay;
+		inputs(1'b1,1'b0,1'b1);
+		delay;
+		inputs(1'b1,1'b1,1'b0);
+		delay;
+		inputs(1'b1,1'b1,1'b1);
+		delay;
+	end
+endmodule 
